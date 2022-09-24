@@ -27,10 +27,9 @@ class UserController extends ApiController
         return $this->result($this->service->update($data));
     }
 
-    public function updateToken(UpdateTokenRequest $request)
+    public function offersList()
     {
-        $data = $request->validated();
-        return $this->result($this->service->updateToken($this->authUser(), $data['fb_token']));
+        return $this->result($this->service->offersList());
     }
 
     public function verifyEmail(Request $request)

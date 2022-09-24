@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Rate extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'order_id',
-        'executor_id',
+        'id',
         'user_id',
-        'rate',
-        'text',
+        'offer_id',
+        'admin_id',
+        'rate_idea',
+        'rate_realization',
+        'rate_relevance',
     ];
 
     public function user()
@@ -22,13 +24,13 @@ class Review extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function executor()
+    public function offer()
     {
-        return $this->belongsTo(Executor::class);
+        return $this->belongsTo(Offer::class);
     }
 
-    public function order()
+    public function admin()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Admin::class);
     }
 }

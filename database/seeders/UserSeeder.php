@@ -18,21 +18,33 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'phone' => '747 940 0950',
-                'email' => 'snaiperov60@gmail.com',
+                'name' => 'Арманов Арман Арманович',
+                'iin' => '990102000999',
+                'phone' => '777 888 9999',
+                'email' => 'user1@gmail.com',
                 'password' => Hash::make('123'),
-                'city_id' => 1,
-                'business_type_id' => 2,
-                'name' => 'Sniperov User',
             ],
             [
-                'phone' => '747 940 0951',
-                'email' => 'coolzombo@gmail.com',
+                'name' => 'Бериков Берик Берикович',
+                'iin' => '000101887766',
+                'phone' => '777 000 1111',
+                'email' => 'user2@gmail.com',
                 'password' => Hash::make('123'),
-                'city_id' => 1,
-                'business_type_id' => 2,
-                'name' => 'Insane User',
-            ]
+            ],
+            [
+                'name' => 'Айдынова Айжан Айдыновна',
+                'iin' => '010101554433',
+                'phone' => '700 700 8080',
+                'email' => 'user3@gmail.com',
+                'password' => Hash::make('123'),
+            ],
+            [
+                'name' => 'Ярослав Яросл Ерасылович',
+                'iin' => '021022558888',
+                'phone' => '775 513 8888',
+                'email' => 'strong_era@mail.ru',
+                'password' => Hash::make('123'),
+            ],
         ];
 
         foreach ($data as $user) {

@@ -11,28 +11,38 @@ class Offer extends Model
     use HasFactory;
 
     const STATUS_CREATED = 'CREATED';
+    const STATUS_ON_REVIEW = 'ON_REVIEW';
     const STATUS_ACCEPTED = 'ACCEPTED';
     const STATUS_DECLINED = 'DECLINED';
 
     protected $fillable = [
-        'executor_id',
-        'order_id',
+        'id',
+        'title',
+        'description',
+        'user_id',
         'status',
-        'comment',
+        'document_path',
+        'image_path',
+        'rate',
     ];
 
     protected $dispatchesEvents = [
         'updated' => OfferUpdatedEvent::class,
     ];
 
-    public function order()
+    public function user()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function executor()
+    public function admin()
     {
-        return $this->belongsTo(Executor::class);
+        return $this->belongsTo(Admin::class);
+    }
+
+    public function rates()
+    {
+        return $this->hasMany(Rate::class);
     }
 
     public function getStatus() : string
@@ -40,6 +50,9 @@ class Offer extends Model
         switch ($this->status) {
             case self::STATUS_ACCEPTED:
                 return 'Принят';
+                break;
+            case self::STATUS_ON_REVIEW:
+                return 'На рассмотрении';
                 break;
             case self::STATUS_CREATED:
                 return 'Создан';

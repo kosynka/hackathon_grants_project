@@ -27,8 +27,6 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => ['string', 'max:255'],
-            'city_id' => ['exists:cities,id'],
-            'business_type_id' => ['exists:business_types,id'],
             'phone' => [new Phone],
             'email' => ['email'],
             'photo' => ['file'],

@@ -6,30 +6,26 @@ use App\Presenters\BasePresenter;
 
 class OfferPresenter extends BasePresenter
 {
-    public function forOrder()
+    public function index()
     {
         return [
             'id' => $this->id,
-            'executor' => $this->executor ? (new ExecutorPresenter($this->executor))->shortInfo() : null,
-            'status' => $this->status,
-            'comment' => $this->comment,
+            'title' => $this->title,
+            'user_id' => (new UserPresenter($this->user))->shortInfo,
+            'image_path' => $this->image_path,
         ];
     }
 
-    public function executorsId()
-    {
-        return [
-            'id' => $this->executor->id,
-        ];
-    }
-
-    public function forExecutor()
+    public function info()
     {
         return [
             'id' => $this->id,
-            'order' => (new OrderPresenter($this->order))->list(),
-            'status' => $this->status,
-            'comment' => $this->comment,
+            'title' => $this->title,
+            'description' => $this->description,
+            'user_id' => (new UserPresenter($this->user))->shortInfo,
+            'status' => $this->getStatus(),
+            'image_path' => $this->image_path,
+            'rate' => $this->rate ? $this->rate : null,
         ];
     }
 }

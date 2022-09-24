@@ -9,18 +9,48 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $data = [
-            'username' => 'admin',
-            'password' => Hash::make('123321'),
+            [
+                'username' => 'administrator',
+                'password' => Hash::make('123456'),
+                'role' => 'ADMIN',
+            ],
+            [
+                'username' => 'jury1',
+                'password' => Hash::make('123456'),
+                'role' => 'JURY',
+            ],
+            [
+                'username' => 'jury2',
+                'password' => Hash::make('123456'),
+                'role' => 'JURY',
+            ],
+            [
+                'username' => 'jury3',
+                'password' => Hash::make('123456'),
+                'role' => 'JURY',
+            ],
+            [
+                'username' => 'jury4',
+                'password' => Hash::make('123456'),
+                'role' => 'JURY',
+            ],
+            [
+                'username' => 'jury5',
+                'password' => Hash::make('123456'),
+                'role' => 'JURY',
+            ],
+            [
+                'username' => 'jury6',
+                'password' => Hash::make('123456'),
+                'role' => 'JURY',
+            ],
         ];
 
-        Admin::create($data);
+        foreach ($data as $admin) {
+            Admin::create($admin);
+        }
     }
 }

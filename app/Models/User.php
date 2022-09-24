@@ -13,49 +13,24 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, Authorizable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'phone',
+        'id',
         'name',
+        'iin',
+        'phone',
         'email',
         'password',
-        'fb_token',
         'photo_path',
-        'city_id',
-        'business_type_id',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
+        'email_verified_at',
         'remember_token',
     ];
 
-    public function city()
-    {
-        return $this->belongsTo(City::class);
-    }
-
-    public function business_type()
-    {
-        return $this->belongsTo(BusinessType::class);
-    }
-
     public function offers()
     {
-        return $this->hasManyThrough(Offer::class, Order::class);
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Offer::class);
     }
 }

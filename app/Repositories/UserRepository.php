@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use App\Models\Offer;
 
 class UserRepository
 {
@@ -15,6 +16,13 @@ class UserRepository
     public function update(User $user, array $data) : void
     {
         $user->update($data);
+    }
+
+    public function offersList(User $user)
+    {
+        $offers = Offer::where('user_id', $user->id)->get();
+
+        return $offers;
     }
 
     public function findByPhone(string $phone)

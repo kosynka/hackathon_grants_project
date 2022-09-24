@@ -28,13 +28,9 @@ class AuthService extends BaseService
 
     public function login (array $data) {
         $user = $this->userRepository->findByPhone($data['phone']);
-        $executor = $this->executorRepository->findByPhone($data['phone']);
 
         if (isset($user)) {
             return $this->loginUser($data, $user);
-        }
-        elseif (isset($executor)) {
-            return $this->loginExecutor($data, $executor);
         }
         else {
             return $this->error(401, 'Неверный номер телефона или пароль');
@@ -48,37 +44,19 @@ class AuthService extends BaseService
         }
 
         $token = $user->createToken($user->email, ['user'])->plainTextToken;
-        // $user->update($token);
 
         return $this->result([
             'token' => $token,
-            'type' => 'user',
             'user' => (new UserPresenter($user))->info(),
-        ]);
-    }
-
-    private function loginExecutor($data, $executor)
-    {
-        if (!Hash::check($data['password'], $executor->password)) {
-            return $this->error(401, 'Неверный номер телефона или пароль');
-        }
-
-        $token = $executor->createToken($executor->email, ['executor'])->plainTextToken;
-        // $executor->update($token);
-
-        return $this->result([
-            'token' => $token,
-            'type' => 'executor',
-            'executor' => (new ExecutorPresenter($executor))->info(),
         ]);
     }
 
     public function register(array $data)
     {
-        if ($this->userRepository->findByPhone($data['phone']) || $this->executorRepository->findByPhone($data['phone'])) {
+        if ($this->userRepository->findByPhone($data['phone'])) {
             return $this->errNotAcceptable('Данный номер телефона уже занят');
         }
-        if ($this->userRepository->findByEmail($data['email']) || $this->executorRepository->findByEmail($data['email'])) {
+        if ($this->userRepository->findByEmail($data['email'])) {
             return $this->errNotAcceptable('Данный адрес эл. почты уже занят');
         }
 

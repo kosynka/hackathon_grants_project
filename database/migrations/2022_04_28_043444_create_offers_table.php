@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('executor_id')->nullable();
-            $table->foreignId('order_id')->nullable();
-            $table->enum('status', ['CREATED', 'ACCEPTED', 'DECLINED']);
-            $table->string('comment')->nullable();
+            $table->string('title');
+            $table->text('description');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->enum('status', ['CREATED', 'ON_REVIEW', 'ACCEPTED', 'DECLINED']);
+            $table->string('document_path');
+            $table->string('image_path')->nullable();
+            $table->float('rate')->nullable();
             $table->timestamps();
         });
     }

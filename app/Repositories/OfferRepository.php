@@ -21,24 +21,15 @@ class OfferRepository
         return Offer::find($id);
     }
 
+    public function index()
+    {
+        return Offer::all();
+    }
+
     public function getCreated(int $orderId)
     {
         return Offer::where('order_id', $orderId)
             ->where('status', Offer::STATUS_CREATED)
             ->get();
-    }
-
-    public function declineCreated(int $orderId) : void
-    {
-        Offer::where('order_id', $orderId)
-            ->where('status', Offer::STATUS_CREATED)
-            ->update(['status' => Offer::STATUS_DECLINED]);
-    }
-
-    public function declineOthers(int $orderId, int $executor_id) : void
-    {
-        Offer::where('order_id', $orderId)
-            ->whereNot('executor_id', $executor_id)
-            ->update(['status' => Offer::STATUS_DECLINED]);
     }
 }
