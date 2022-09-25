@@ -63,7 +63,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
             <li><a href="{{url('admin')}}"><i class="fa fa-list" aria-hidden="true"></i>Новые заявки</a></li>
-            <li><a href="{{url('admin/old_offer')}}"><i class="fa fa-list-ul" aria-hidden="true"></i>Подтвержденные заявки</a></li>
+            <li><a href="{{url('admin/old_offer')}}"><i class="fa fa-list-ul" aria-hidden="true"></i>Заявки на рассмотрении</a></li>
             @yield('main')
         </ul>
 

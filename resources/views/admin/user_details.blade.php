@@ -67,11 +67,14 @@
                                             </td>
                                             @if ($offer->image_path)
                                                 <td class="text-warning">
-                                                    <img src="{{ url($offer->image_path) }}" style="max-width: 200px" class="rounded mx-auto m-3">
+                                                    <img src="https://img.freepik.com/free-vector/shrug-concept-illustration_114360-9375.jpg?w=740&t=st=1664105632~exp=1664106232~hmac=988a7cca8b19f5e209b3a60ad0b1d3b315fba7b27c5c48fb1abb1b5bf3e379a5" style="width: 200px !important; height: 200px !important" class="rounded mx-auto m-3">
                                                 </td>
                                             @else
                                                 <td class="text-warning"></td>
                                             @endif
+                                            <td>
+                                                <a class="btn btn-default" href="{{ route('details', ['id' => $offer->id]) }}">посмотреть заявку</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

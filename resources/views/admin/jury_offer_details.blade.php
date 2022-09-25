@@ -137,18 +137,27 @@
                                         <th scope="row"><b>Идея: </b></th>
                                         <td>
                                             {{ $rate->rate_idea }}
+                                            @for ($i = 0; $i < $rate->rate_idea; $i++)
+                                                <i class="fa fa-star" style="color: yellow"></i>
+                                            @endfor
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row"><b>План реализации: </b></th>
                                         <td>
                                             {{ $rate->rate_realization }}
+                                            @for ($i = 0; $i < $rate->rate_realization; $i++)
+                                                <i class="fa fa-star" style="color: yellow"></i>
+                                            @endfor
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row"><b>Актуальность: </b></th>
                                         <td>
                                             {{ $rate->rate_relevance }}
+                                            @for ($i = 0; $i < $rate->rate_relevance; $i++)
+                                                <i class="fa fa-star" style="color: yellow"></i>
+                                            @endfor
                                         </td>
                                     </tr>
                                 </tbody>
