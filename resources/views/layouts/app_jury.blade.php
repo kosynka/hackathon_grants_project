@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
-  <title>Admin Panel - @yield('title')</title>
+  <title>Jury Panel - @yield('title')</title>
 
   <script src="{{url('lib/jquery/jquery.min.js')}}"></script>
 
@@ -62,8 +62,8 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-            <li><a href="{{url('admin/')}}"><i class="fa fa-list-ul" aria-hidden="true"></i>Заявки</a></li>
-            <li><a href="{{url('admin/user')}}"><i class="fa fa-user" aria-hidden="true"></i>Пользователи</a></li>
+            <li><a href="{{url('admin')}}"><i class="fa fa-list" aria-hidden="true"></i>Новые заявки</a></li>
+            <li><a href="{{url('admin/old_offer')}}"><i class="fa fa-list-ul" aria-hidden="true"></i>Подтвержденные заявки</a></li>
             @yield('main')
         </ul>
 

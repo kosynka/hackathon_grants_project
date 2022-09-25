@@ -1,5 +1,5 @@
 @section('title', 'Заявки')
-@extends('layouts.app')
+@extends('layouts.app_jury')
 @section('content')
     <div class="content-panel">
         <div class="container">
@@ -17,7 +17,6 @@
                             <th scope="col">#</th>
                             <th scope="col">Заголовок</th>
                             <th scope="col">Статус</th>
-                            <th scope="col">Пользователь</th>
                             <th scope="col">Дата создания заявки</th>
                             <th scope="col">Картинка</th>
                             <th scope="col"></th>
@@ -35,7 +34,6 @@
                                             <a class="text-danger">{{ $offer->getStatus() }}</a>
                                         @endif
                                     </td>
-                                    <td>{{ $offer->user->name }}</td>
                                     <td>{{ $offer->created_at }}</td>
                                     @if ($offer->image_path)
                                         <td class="text-warning">

@@ -11,7 +11,7 @@ class OfferPresenter extends BasePresenter
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'user_id' => (new UserPresenter($this->user))->shortInfo,
+            'user' => (new UserPresenter($this->user))->info(),
             'image_path' => $this->image_path,
         ];
     }
@@ -22,7 +22,7 @@ class OfferPresenter extends BasePresenter
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'user_id' => (new UserPresenter($this->user))->shortInfo,
+            'user' => (new UserPresenter($this->user))->info(),
             'status' => $this->getStatus(),
             'image_path' => $this->image_path,
             'rate' => $this->rate ? $this->rate : null,

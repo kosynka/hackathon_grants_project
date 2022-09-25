@@ -26,12 +26,11 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'iin' => ['required', 'string'],
             'phone' => ['required', new Phone],
             'email' => ['required', 'email'],
             'photo_path' => ['nullable', 'image'],
-            'city_id' => ['required', 'integer', 'exists:cities,id'],
             'password' => ['required', 'confirmed', 'string', 'max:32'],
-            'business_type_id' => ['required', 'int', 'exists:business_types,id']
         ];
     }
 }

@@ -17,7 +17,11 @@ class UserController extends Controller
 
     public function details($id)
     {
-        $user = User::with('orders', 'offers')->find($id);
+        $user = User::with('offers')->find($id);
+
+        foreach ($user->offers as $offer) {
+            // dd(url($offer->document_path));
+        }
 
         return view('admin.user_details', compact('user'));
     }
